@@ -52,7 +52,6 @@ public class MembersController {
 		result.put("status", "OK");
 		result.put("duplicated", random.nextBoolean());
 		
-		
 		return result;
 	}
 	
