@@ -88,4 +88,7 @@ public class ReplyVO {
 		this.membersVO = membersVO;
 	}
 
+	
+	
+	
 }
