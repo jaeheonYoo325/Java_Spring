@@ -1,0 +1,64 @@
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>▶ %d{HH:mm:ss.SSS} %-5level %logger{0}.%method:%line - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="STDOUT_File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <file>E:/logs/stdout.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>E:/logs/stdout.%d{yyyy-MM-dd}.log</fileNamePattern>
+    </rollingPolicy>
+    
+    <encoder>
+      <pattern>▶ %d{HH:mm:ss.SSS} %-5level %logger{0}.%method:%line - %msg%n</pattern>
+    </encoder>
+  </appender>
+ 
+  <appender name="statistics" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>E:/logs/statistics.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>E:/logs/statistics.%d{yyyy-MM-dd}.log</fileNamePattern>
+    </rollingPolicy>
+    
+    <encoder>
+      <pattern>Statistics : %d{HH:mm:ss.SSS}, %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="param" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>E:/logs/param.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>E:/logs/param.%d{yyyy-MM-dd}.log</fileNamePattern>
+    </rollingPolicy>
+    
+    <encoder>
+      <pattern>Param : %d{HH:mm:ss.SSS} %logger.%method:%line %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <logger level="debug" name="com.ktds">
+    <appender-ref ref="param" />
+    <!-- <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDOUT_File" /> -->
+  </logger>
+  
+  <logger level="info" name="list.Statistics" >
+  	<appender-ref ref="statistics" />
+  </logger>
+
+  <!-- <logger level="debug" name="org.springframework">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDOUT_File" />
+  </logger>  -->
+  
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDOUT_File"></appender-ref>
+  </root>
+</configuration>
